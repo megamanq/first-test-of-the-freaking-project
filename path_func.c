@@ -10,11 +10,12 @@ char *_getenv(const char *gv)
 {
 	int indi = 0, indj;
 	char *variable_value;
+
 	if (!gv)
-    {
+	{
 		return (NULL);
-    }
-    for (; environ[indi]; indi++)
+	}
+	for (; environ[indi]; indi++)
 	{
 		indj = 0;
 		if (environ[indi][indj] == gv[indj])
@@ -23,8 +24,8 @@ char *_getenv(const char *gv)
 			{
 				if (gv[indj] != environ[indi][indj])
 				{
-                    break;
-                }
+					break;
+				}
 				indj++;
 			}
 			if (gv[indj] == '\0')
