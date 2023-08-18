@@ -41,7 +41,7 @@ void _puts(char *s)
 
 char **splitstr(char *str, const char *delime)
 {
-	int i, word_counter;
+	int i, wrd_cnt;
 	char **arr;
 	char *tkn;
 	char *str_copy;
@@ -52,7 +52,7 @@ char **splitstr(char *str, const char *delime)
 		perror(_getenv("_"));
 		return (NULL);
 	}
-    i = 0;
+	i = 0;
 	while (str[i])
 	{
 		str_copy[i] = str[i];
@@ -68,15 +68,15 @@ char **splitstr(char *str, const char *delime)
 		return (NULL);
 	}
 	arr[0] = _strdup(tkn);
-    i = 1;
-    word_counter = 3;
+	i = 1;
+	wrd_cnt = 3;
 	while (tkn)
 	{
 		tkn = strtok(NULL, delime);
-		arr = _realloc(arr, (sizeof(char *) * (word_counter - 1)), (sizeof(char *) * word_counter));
+		arr = _realloc(arr, (sizeof(char *) * (wrd_cnt - 1)), (sizeof(char *) * wrd_cnt));
 		arr[i] = _strdup(tkn);
-        i++;
-        word_counter++;
+		i++;
+		word_counter++;
 	}
 	free(str_copy);
 	return (arr);
