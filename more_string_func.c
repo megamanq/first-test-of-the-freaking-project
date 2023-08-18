@@ -41,7 +41,7 @@ void _puts(char *s)
 
 char **splitstr(char *str, const char *delime)
 {
-	int i, wrd_cnt;
+	int i, wdct;
 	char **arr;
 	char *tkn;
 	char *str_copy;
@@ -69,11 +69,11 @@ char **splitstr(char *str, const char *delime)
 	}
 	arr[0] = _strdup(tkn);
 	i = 1;
-	wrd_cnt = 3;
+	wdct = 3;
 	while (tkn)
 	{
 		tkn = strtok(NULL, delime);
-		arr = _realloc(arr, (sizeof(char *) * (wrd_cnt - 1)), (sizeof(char *) * wrd_cnt));
+		arr = _realloc(arr, (sizeof(char *) * (wdct - 1)), (sizeof(char *) * wdct));
 		arr[i] = _strdup(tkn);
 		i++;
 		word_counter++;
