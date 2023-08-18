@@ -1,3 +1,4 @@
+#include "shell.h"
 
 /**
  * _strlen - calculate the lenght of a str
@@ -76,7 +77,7 @@ char **splitstr(char *str, const char *delime)
 		arr = _realloc(arr, (sizeof(char *) * (wdct - 1)), (sizeof(char *) * wdct));
 		arr[i] = _strdup(tkn);
 		i++;
-		word_counter++;
+		wdct++;
 	}
 	free(str_copy);
 	return (arr);
