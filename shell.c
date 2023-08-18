@@ -48,7 +48,7 @@ void man_dir(char *v, path_dir *head, char *path, char **arr)
 int main(void)
 {
 	void (*func)(char **);
-	char **arr_v, *buffer = NULL, *val, *pth_nam;
+	char **arr_v, *buffer = NULL, *val = NULL, *pth_nam = NULL;
 	size_t size = 0;
 	ssize_t cmdlen = 0;
 	path_dir *h = '\0';
@@ -70,7 +70,7 @@ int main(void)
 			func = verify_build(arr_v);
 			if (func)
 			{
-				isfunc(buffer, arr_v, func());
+				isfunc(buffer, arr_v, func);
 			}
 			else if (pth_nam)
 			{
