@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * ispath - execute when pathnam true
  * @arr: array of pointer of pointers
@@ -18,10 +19,10 @@ void ispath_nam(char **arr, char *path)
  * @buf: pointer of chars
 */
 
-void isfunc(char *buf, char **arr)
+void isfunc(char *buf, char **arr, void (*func)(char **))
 {
 	free(buf);
-	f(arr);
+	func(arr);
 }
 
 /**
@@ -69,7 +70,7 @@ int main(void)
 			func = verify_build(arr_v);
 			if (func)
 			{
-				isfunc(buffer, arr_v);
+				isfunc(buffer, arr_v, func());
 			}
 			else if (pth_nam)
 			{

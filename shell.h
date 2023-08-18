@@ -101,7 +101,7 @@ void free_arr(char **arr);
  */
 
 void ispath_nam(char **arr, char *path);
-void isfunc(char *buf, char **arr);
+void isfunc(char *buf, char **arr, void (*func)(char **));
 void man_dir(char *v, path_dir *head, char *path, char **arr);
 
 #endif
