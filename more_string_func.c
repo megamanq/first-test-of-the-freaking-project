@@ -9,10 +9,10 @@ int _strlen(char *s)
 {
 	int i = 0;
 
-    for (i = 0; s[i] != '\0'; i++)
-    {
-        continue;
-    }
+	for (i = 0; s[i] != '\0'; i++)
+	{
+		continue;
+	}
 	return (i);
 }
 
@@ -56,7 +56,7 @@ char **splitstr(char *str, const char *delime)
 	while (str[i])
 	{
 		str_copy[i] = str[i];
-        i++;
+		i++;
 	}
 	str_copy[i] = '\0';
 
