@@ -1,56 +1,83 @@
-#include "shell.h"
 
 /**
- * dir_path - make linkedlist for PATH directories
- * @path: PATH value (STRING)
- * Return: ptr to linkedlist
+ * _strlen - calculate the lenght of a str
+ * @s: ptr to str
+ * Return: str lenght
  */
 
-path_dir *dir_path(char *path)
+int _strlen(char *s)
 {
-	path_dir *h = '\0';
-	char *tkn;
-	char *path_copy = _strdup(path);
+	int i = 0;
 
-	tkn = strtok(path_copy, ":");
-	while (tkn)
-	{
-		h = add_at_end(&h, tkn);
-		tkn = strtok(NULL, ":");
-	}
-	return (h);
+    for (i = 0; s[i] != '\0'; i++)
+    {
+        continue;
+    }
+	return (i);
 }
 
 /**
- * add_at_end - add node at the end of a list
- * @h: ptr to ptr linked list
- * @str: ptr to str in prev node
- * Return: addr of new node
+ * _puts - print as str
+ * @s: ptr to str
  */
 
-path_dir *add_at_end(path_dir **h, char *str)
+void _puts(char *s)
 {
+	int i;
 
-	path_dir *temp;
-	path_dir *new_node;
+	for (i = 0; s[i]; i++)
+	{
+		_putchar(s[i]);
+	}
+}
 
-	new_node = malloc(sizeof(path_dir));
-	if (!new_node || !str)
+
+/**
+ * splitstr - split a string and save it as array of words
+ * @str: str ptr to be splited
+ * @delime: delimiter
+ * Return: pointer to array of strings (pointers)
+ */
+
+char **splitstr(char *str, const char *delime)
+{
+	int i, word_counter;
+	char **arr;
+	char *tkn;
+	char *str_copy;
+
+	str_copy = malloc(sizeof(char) * (_strlen(str) + 1));
+	if (str_copy == NULL)
+	{
+		perror(_getenv("_"));
 		return (NULL);
-	new_node->dir = str;
-	new_node->p = '\0';
-	if (!*h)
-	{
-		*h = new_node;
 	}
-	else
+    i = 0;
+	while (str[i])
 	{
-		temp = *h;
-		while (temp->p)
-		{
-			temp = temp->p;
-		}
-		temp->p = new_node;
+		str_copy[i] = str[i];
+        i++;
 	}
-	return (*h);
+	str_copy[i] = '\0';
+
+	tkn = strtok(str_copy, delime);
+	arr = malloc((sizeof(char *) * 2));
+	if (arr == NULL)
+	{
+		perror(_getenv("_"));
+		return (NULL);
+	}
+	arr[0] = _strdup(tkn);
+    i = 1;
+    word_counter = 3;
+	while (tkn)
+	{
+		tkn = strtok(NULL, delime);
+		arr = _realloc(arr, (sizeof(char *) * (word_counter - 1)), (sizeof(char *) * word_counter));
+		arr[i] = _strdup(tkn);
+        i++;
+        word_counter++;
+	}
+	free(str_copy);
+	return (arr);
 }

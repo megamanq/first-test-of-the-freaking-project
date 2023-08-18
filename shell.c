@@ -33,11 +33,11 @@ void isfunc(char *buf, char **arr, void (*func)(char **))
  * @arr: arr_v
  */
 
-void man_dir(char *v, path_dir *head, char *path, char **arr)
+void man_dir(char *v, path_dir *head, char **path, char **arr)
 {
 	v = _getenv("PATH");
 	head = dir_path(v);
-	path = get_path(arr[0], head);
+	*path = get_path(arr[0], head);
 }
 
 /**
@@ -48,7 +48,7 @@ void man_dir(char *v, path_dir *head, char *path, char **arr)
 int main(void)
 {
 	void (*func)(char **);
-	char **arr_v, *buffer = NULL, *val = NULL, *pth_nam = NULL;
+	char **arr_v, *buffer = NULL, *val = NULL, *pth_nam = '\0';
 	size_t size = 0;
 	ssize_t cmdlen = 0;
 	path_dir *h = '\0';
@@ -66,7 +66,7 @@ int main(void)
 		}
 		else
 		{
-			man_dir(val, h, pth_nam, arr_v);
+			man_dir(val, h, &pth_nam, arr_v);
 			func = verify_build(arr_v);
 			if (func)
 			{
