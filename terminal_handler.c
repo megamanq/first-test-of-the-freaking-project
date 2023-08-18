@@ -22,8 +22,9 @@ void _isterminal(void)
 void _isEOF(int cmdlen, char *buffer)
 {
 	(void)buffer;
-	int t = isatty(STDIN_FILENO);
-
+	int t;
+	
+	t = isatty(STDIN_FILENO);
 	if (cmdlen == -1)
 	{
 		if (t)
