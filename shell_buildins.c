@@ -36,12 +36,12 @@ void print_env(char **arr_args __attribute__ ((unused)))
 {
 	int i;
 
-    i = 0;
+	i = 0;
 	while (environ[i])
 	{
 		_puts(environ[i]);
 		_puts("\n");
-        i++;
+		i++;
 	}
 }
 
