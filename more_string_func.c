@@ -15,7 +15,7 @@ path_dir *dir_path(char *path)
 	tkn = strtok(path_copy, ":");
 	while (tkn)
 	{
-		h = add_node_end(&h, tkn);
+		h = add_at_end(&h, tkn);
 		tkn = strtok(NULL, ":");
 	}
 	return (h);
