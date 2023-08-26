@@ -23,7 +23,7 @@ void _isEOF(int cmdlen, char *buffer)
 {
 	int t;
 	(void)buffer;
-	
+
 	t = isatty(STDIN_FILENO);
 	if (cmdlen == -1)
 	{

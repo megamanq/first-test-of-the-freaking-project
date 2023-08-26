@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * ispath - execute when pathnam true
+ * ispath_nam - execute when pathnam true
  * @arr: array of pointer of pointers
  * @path: pointer of chars
 */
@@ -17,6 +17,7 @@ void ispath_nam(char **arr, char *path)
  * isfunc - execute when func true
  * @arr: array of pointer of pointers
  * @buf: pointer of chars
+ * @func: pointer a functi
 */
 
 void isfunc(char *buf, char **arr, void (*func)(char **))
