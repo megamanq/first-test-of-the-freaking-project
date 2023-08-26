@@ -25,8 +25,8 @@ int main(void)
 		else
 		{
 			val = _getenv("PATH");
-			h = dir_path(v);
-			pth_nam = get_path(arr_v[0], head);
+			h = dir_path(val);
+			pth_nam = get_path(arr_v[0], h);
 			func = verify_build(arr_v);
 			if (func)
 			{
