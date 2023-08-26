@@ -31,7 +31,7 @@ int main(void)
 			if (func)
 			{
 				free(buffer);
-				f(arr_v);
+				func(arr_v);
 			}
 			else if (pth_nam)
 			{
