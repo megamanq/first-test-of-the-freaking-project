@@ -18,6 +18,7 @@ path_dir *dir_path(char *path)
 		h = add_at_end(&h, tkn);
 		tkn = strtok(NULL, ":");
 	}
+	free(path_copy);
 	return (h);
 }
 
@@ -52,5 +53,6 @@ path_dir *add_at_end(path_dir **h, char *str)
 		}
 		temp->p = new_node;
 	}
+	free(new_node);
 	return (*h);
 }
