@@ -74,6 +74,7 @@ char **splitstr(char *str, const char *delime)
 	while (tkn)
 	{
 		tkn = strtok(NULL, delime);
+		free(arr[i]);
 		arr = _realloc(arr, (sizeof(char *) * (wdct - 1)), (sizeof(char *) * wdct));
 		arr[i] = _strdup(tkn);
 		i++;
