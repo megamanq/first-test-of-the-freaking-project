@@ -1,47 +1,6 @@
 #include "shell.h"
 
 /**
- * ispath_nam - execute when pathnam true
- * @arr: array of pointer of pointers
- * @path: pointer of chars
-*/
-
-void ispath_nam(char **arr, char *path)
-{
-	free(arr[0]);
-	arr[0] = path;
-	exec(arr);
-}
-
-/**
- * isfunc - execute when func true
- * @arr: array of pointer of pointers
- * @buf: pointer of chars
- * @func: pointer a functi
-*/
-
-void isfunc(char *buf, char **arr, void (*func)(char **))
-{
-	free(buf);
-	func(arr);
-}
-
-/**
- * man_dir - manipulating directory paths
- * @v: value
- * @head: pointer to h
- * @path: pth nam
- * @arr: arr_v
- */
-
-void man_dir(char *v, path_dir *head, char **path, char **arr)
-{
-	v = _getenv("PATH");
-	head = dir_path(v);
-	*path = get_path(arr[0], head);
-}
-
-/**
  * main - shell logic
  * Return: 0 on success
  */
@@ -49,7 +8,7 @@ void man_dir(char *v, path_dir *head, char **path, char **arr)
 int main(void)
 {
 	void (*func)(char **);
-	char **arr_v, *buffer = NULL, *val = NULL, *pth_nam = '\0';
+	char **arr_v, *buffer = NULL, *val, *pth_nam;
 	size_t size = 0;
 	ssize_t cmdlen = 0;
 	path_dir *h = '\0';
@@ -62,25 +21,26 @@ int main(void)
 		_isEOF(cmdlen, buffer);
 		arr_v = splitstr(buffer, " \n");
 		if (!arr_v || !arr_v[0])
-		{
 			exec(arr_v);
-		}
 		else
 		{
-			man_dir(val, h, &pth_nam, arr_v);
+			val = _getenv("PATH");
+			h = dir_path(v);
+			pth_nam = get_path(arr_v[0], head);
 			func = verify_build(arr_v);
 			if (func)
 			{
-				isfunc(buffer, arr_v, func);
+				free(buffer);
+				f(arr_v);
 			}
 			else if (pth_nam)
 			{
-				ispath_nam(arr_v, pth_nam);
-			}
-			else if (!pth_nam)
-			{
+				free(arr_v[0]);
+				arr_v[0] = pth_nam;
 				exec(arr_v);
 			}
+			else if (!pth_nam)
+				exec(arr_v);
 		}
 	}
 	free_lst(h);
